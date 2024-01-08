@@ -1,0 +1,39 @@
+{
+  "name": "cap_workshop_demo",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.9.0",
+    "@sap-cloud-sdk/util": "^3.9.0",
+    "@sap/cds": "^7",
+    "cf-nodejs-logging-support": "^7.2.0",
+    "express": "^4",
+    "@sap/cds-hana": "^2"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "API_SALES_ORDER_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_SALES_ORDER_SRV",
+        "[hybrid]": {
+          "credentials": {
+            "destination": "S4HANACLOUD_SalesOrders"
+          }
+        }
+      },
+      "[hybrid]": {
+        "db": "hana"
+      }
+    }
+  }
+}
